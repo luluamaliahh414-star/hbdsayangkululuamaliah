@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Lulu! 🎂</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Audio element for background music -->
+    <audio id="birthdayMusic" loop>
+        <source src="sound/hbd.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Birthday Card Page -->
+    <div class="birthday-card show" id="birthdayCard">
+        <!-- Top decoration -->
+        <div class="top-decoration">
+            <span>🎉</span>
+            <div class="date-badge">04 JANUARI 2004</div>
+            <span>💝</span>
+        </div>
+
+        <!-- Side decorations -->
+        <div class="gift-box gift-left">🎁</div>
+        <div class="gift-box gift-right">🎁</div>
+        <div class="balloon balloon-left">🎈</div>
+        <div class="balloon balloon-right">🎈</div>
+
+        <!-- Stars -->
+        <div class="star" style="top: 15%; left: 15%;">⭐</div>
+        <div class="star" style="top: 25%; right: 20%;">⭐</div>
+        <div class="star" style="bottom: 20%; left: 10%;">⭐</div>
+        <div class="star" style="bottom: 30%; right: 15%;">⭐</div>
+
+        <!-- Main content -->
+        <div class="card-content">
+            <div class="age-display">22</div>
+            <div class="name-text">Lulu Amaliah</div>
+            <div class="happy-birthday-text">happy birthday</div>
+            
+            <div class="cake-section" id="cakeSection">
+                <div class="candles">
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                </div>
+                <div class="cake-emoji">🎂</div>
+            </div>
+            
+            <p style="color: #fff; margin-top: 20px; font-size: 1.2em; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+                🎂 Klik kue untuk melihat galeri kenangan! ✨
+            </p>
+        </div>
+    </div>
+
+    <!-- Scrapbook Gallery -->
+    <div class="scrapbook-gallery" id="scrapbookGallery">
+        <div class="scrapbook-container">
+            <button class="close-btn" id="closeScrapbook">✖</button>
+            <div class="page-indicator" id="pageIndicator">1 / 3</div>
+            
+            <!-- Page 1 -->
+            <div class="scrapbook-page active" id="page1">
+                <div class="scrapbook-title">HAPPY BIRTHDAY</div>
+                <div class="photos-grid">
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">👧</div>
+                        <div class="photo-caption">Masa Kecil</div>
+                    </div>
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">🎓</div>
+                        <div class="photo-caption">Wisuda</div>
+                    </div>
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">🌟</div>
+                        <div class="photo-caption">Prestasi</div>
+                    </div>
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">💕</div>
+                        <div class="photo-caption">Keluarga</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2 -->
+            <div class="scrapbook-page" id="page2">
+                <div class="scrapbook-title">KENANGAN INDAH</div>
+                <div class="photos-grid">
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">🏖️</div>
+                        <div class="photo-caption">Liburan</div>
+                    </div>
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">🍰</div>
+                        <div class="photo-caption">Ulang Tahun Lalu</div>
+                    </div>
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">🎪</div>
+                        <div class="photo-caption">Bermain</div>
+                    </div>
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">📸</div>
+                        <div class="photo-caption">Selfie</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 3 -->
+            <div class="scrapbook-page" id="page3">
+                <div class="scrapbook-title">HARAPAN & DOA</div>
+                <div style="text-align: center; color: #fff; padding: 40px;">
+                    <h2 style="font-size: 2em; margin-bottom: 30px;">🌟 Selamat Ulang Tahun ke-22! 🌟</h2>
+                    <p style="font-size: 1.3em; line-height: 1.6; margin-bottom: 20px;">
+                        Semoga di usia yang ke-22 ini, kamu selalu diberi kesehatan, kebahagiaan, dan kesuksesan dalam segala hal.
+                    </p>
+                    <p style="font-size: 1.3em; line-height: 1.6; margin-bottom: 20px;">
+                        Semoga semua impian dan cita-citamu dapat terwujud, dan semoga kamu selalu dikelilingi oleh orang-orang yang menyayangimu.
+                    </p>
+                    <p style="font-size: 1.5em; color: #ffeaa7;">
+                        🎂 Happy Birthday Lulu Amaliah! 🎉
+                    </p>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="nav-btn" id="prevBtn">◀</button>
+                <button class="nav-btn" id="nextBtn">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
