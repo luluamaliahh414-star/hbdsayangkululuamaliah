@@ -523,37 +523,52 @@ class ScrapbookGallery {
         const container = document.getElementById('scrapbookContainer');
         if (!container) return;
 
-        container.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
-        container.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: true });
-        container.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: true });
+        // Touch events
+        container.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
+        container.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+        container.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: false });
+        
+        // Mouse events
         container.addEventListener('mousedown', this.handleMouseDown.bind(this));
+        
+        // Keyboard events
         document.addEventListener('keydown', this.handleKeyPress.bind(this));
+        
+        // Prevent context menu
         container.addEventListener('contextmenu', e => e.preventDefault());
     }
 
     handleTouchStart(e) {
         if (isAnimating || !isScrapbookMode) return;
+        e.preventDefault();
         touchStartX = e.touches[0].clientX;
+        touchEndX = touchStartX;
     }
 
     handleTouchMove(e) {
         if (isAnimating || !isScrapbookMode) return;
+        e.preventDefault();
+        touchEndX = e.touches[0].clientX;
     }
 
     handleTouchEnd(e) {
         if (isAnimating || !isScrapbookMode) return;
-        touchEndX = e.changedTouches[0].clientX;
+        e.preventDefault();
         this.handleSwipe();
     }
 
     handleMouseDown(e) {
         if (isAnimating || !isScrapbookMode) return;
+        e.preventDefault();
         touchStartX = e.clientX;
+        touchEndX = touchStartX;
         
-        const handleMouseMove = (e) => {};
+        const handleMouseMove = (e) => {
+            touchEndX = e.clientX;
+        };
         
         const handleMouseUp = (e) => {
-            touchEndX = e.clientX;
+            e.preventDefault();
             this.handleSwipe();
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
@@ -564,7 +579,7 @@ class ScrapbookGallery {
     }
 
     handleSwipe() {
-        const swipeThreshold = 50;
+        const swipeThreshold = 75;
         const swipeDistance = touchEndX - touchStartX;
 
         if (Math.abs(swipeDistance) > swipeThreshold) {
@@ -574,6 +589,10 @@ class ScrapbookGallery {
                 this.nextPage();
             }
         }
+        
+        // Reset touch positions
+        touchStartX = 0;
+        touchEndX = 0;
     }
 
     handleKeyPress(e) {
@@ -1468,9 +1487,19 @@ function addDynamicAnimations() {
             }
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         @keyframes fadeOut {
             from { opacity: 1; }
             to { opacity: 0; }
+        }
+
+        @keyframes modalZoom {
+            from { transform: translateY(-50%) scale(0.7); opacity: 0; }
+            to { transform: translateY(-50%) scale(1); opacity: 1; }
         }
 
         @keyframes letterConfettiFall {
