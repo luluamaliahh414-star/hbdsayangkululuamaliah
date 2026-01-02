@@ -534,15 +534,21 @@ class ScrapbookGallery {
     handleTouchStart(e) {
         if (isAnimating || !isScrapbookMode) return;
         touchStartX = e.touches[0].clientX;
+        touchEndX = touchStartX;
     }
 
     handleTouchMove(e) {
         if (isAnimating || !isScrapbookMode) return;
+        touchEndX = e.touches[0].clientX;
+        
+        // Prevent default scroll behavior
+        if (Math.abs(touchEndX - touchStartX) > 10) {
+            e.preventDefault();
+        }
     }
 
     handleTouchEnd(e) {
         if (isAnimating || !isScrapbookMode) return;
-        touchEndX = e.changedTouches[0].clientX;
         this.handleSwipe();
     }
 
